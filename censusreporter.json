@@ -1,0 +1,15 @@
+{
+    "name": "Census Reporter",
+    "id_name": "censusreporter",
+    "category": "Add",
+    "description": "Import census data quickly using Census Reporter",
+    "parameters": [{
+        "name": "Table ID",
+        "id_name": "table_id",
+        "type": "string"
+    }, {
+        "name": "Geo ID",
+        "id_name": "geo_id",
+        "type": "string"
+    }]
+}
