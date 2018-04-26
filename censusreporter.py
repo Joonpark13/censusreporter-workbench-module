@@ -1,4 +1,7 @@
+# import pandas as pd
+
 def render(table, params):
+    """
     import urllib.request as urlreq
     import ssl
     import json
@@ -24,13 +27,13 @@ def render(table, params):
         ssl_context = ssl.SSLContext()
         ssl_context.verify_mode = ssl.CERT_NONE
 
-        with urlreq.urlopen(url.format('B25071', '16000US1714000'), context=ssl_context) as response:
+        with urlreq.urlopen(url.format(tables, geoids), context=ssl_context) as response:
             return json.loads(response.read().decode('utf-8'))
 
 
     # From https://github.com/censusreporter/census-pandas/blob/master/util.py
     def prep_for_pandas(json_data,include_moe=False):
-        """Given a dict of dicts as they come from a Census Reporter API call, set it up to be amenable to pandas.DataFrame.from_dict"""
+        # Given a dict of dicts as they come from a Census Reporter API call, set it up to be amenable to pandas.DataFrame.from_dict
         result = {}
         for geoid, tables in json_data.items():
             flat = {}
@@ -64,7 +67,13 @@ def render(table, params):
 
 
     topic = params['topic']
-    geo = params['geography']
+    # Currently states only
+    geo = params['geography'] + "%2C01000US"
 
     return get_dataframe(topic, geo)
+    """
+    return pd.DataFrame(data=params, index=[0])
 
+
+if __name__ == "__main__":
+    print(render(None, {'topic': 'B01001', 'geography':'04000US01'}))
