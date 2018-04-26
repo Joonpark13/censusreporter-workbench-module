@@ -1,15 +1,17 @@
 {
-    "name": "Census Reporter",
-    "id_name": "censusreporter",
+    "name": "American Community Survey",
+    "id_name": "ACS2016",
     "category": "Add",
-    "description": "Import census data quickly using Census Reporter",
+    "description": "Import ACS data using the Census Reporter API.",
     "parameters": [{
-        "name": "Table ID",
-        "id_name": "table_id",
-        "type": "string"
+        "name": "Topic",
+        "id_name": "topic",
+        "type": "menu",
+        "menu_items": "B01001|B03002|B19001|B17001|B08006|B11002|B12001|B13016|B25002|B25003|B25024|B25026|B25075|B07003|B15002|B16007|B05006|B21002"
     }, {
-        "name": "Geo ID",
-        "id_name": "geo_id",
-        "type": "string"
+        "name": "Geography",
+        "id_name": "geography",
+        "type": "menu",
+        "menu_items": "04000US01|04000US02|04000US04|04000US05|04000US06|04000US08|04000US09|04000US10|04000US11|04000US12|04000US13|04000US15|04000US16|04000US17"
     }]
 }

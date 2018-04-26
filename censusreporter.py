@@ -63,8 +63,8 @@ def render(table, params):
         return frame
 
 
-    table_id = params['table_id']
-    geo_id = params['geo_id']
+    topic = params['topic']
+    geo = params['geography']
 
-    return get_dataframe(table_id, geo_id)
+    return get_dataframe(topic, geo)
 
