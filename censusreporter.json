@@ -12,6 +12,6 @@
         "name": "Geography",
         "id_name": "geography",
         "type": "menu",
-        "menu_items": "04000US01|04000US02|04000US04|04000US05|04000US06|04000US08|04000US09|04000US10|04000US11|04000US12|04000US13|04000US15|04000US16|04000US17"
+        "menu_items": "04000US01|04000US02|04000US04|04000US05|04000US06"
     }]
 }

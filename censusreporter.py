@@ -1,10 +1,13 @@
 # import pandas as pd
 
 def render(table, params):
-    """
     import urllib.request as urlreq
     import ssl
     import json
+
+
+    TOPIC_KEYS = ['B01001', 'B03002', 'B19001', 'B17001', 'B08006', 'B11002', 'B12001', 'B13016', 'B25002', 'B25003', 'B25024', 'B25026', 'B25075', 'B07003', 'B15002', 'B16007', 'B05006', 'B21002']
+    GEO_KEYS = ['04000US01', '04000US02', '04000US04', '04000US05', '04000US06']
 
 
     # Modified from https://github.com/censusreporter/census-pandas/blob/master/util.py
@@ -66,14 +69,15 @@ def render(table, params):
         return frame
 
 
-    topic = params['topic']
+    topic_num = int(params['topic'])
+    geo_num = int(params['geography'])
+
+    topic = TOPIC_KEYS[topic_num]
     # Currently states only
-    geo = params['geography'] + "%2C01000US"
+    geo = GEO_KEYS[geo_num] + "%2C01000US"
 
     return get_dataframe(topic, geo)
-    """
-    return pd.DataFrame(data=params, index=[0])
 
 
 if __name__ == "__main__":
-    print(render(None, {'topic': 'B01001', 'geography':'04000US01'}))
+    print(render(None, {'topic': 0, 'geography':0}))
