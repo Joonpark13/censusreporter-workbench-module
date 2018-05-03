@@ -7,11 +7,11 @@
         "name": "Topic",
         "id_name": "topic",
         "type": "menu",
-        "menu_items": "B01001|B03002|B19001|B17001|B08006|B11002|B12001|B13016|B25002|B25003|B25024|B25026|B25075|B07003|B15002|B16007|B05006|B21002"
+        "menu_items": "Sex by Age|Hispanic or Latino Origin by Race|Household Income in the Past 12 Months|Poverty Status in the Past 12 Months by Sex by Age|Sex of Workers by Means of Transportation to Work|Household Type by Relatives and Nonrelatives for Population in Households|Sex by Marital Status for the Population 15 Years and Over|Women 15 to 50 Years Who Had a Birth in the Past 12 Months by Age|Occupancy Status|Tenure|Units in Structure|Total Population in Occupied Housing Units by Tenure by Year Householder Moved Into Unit|Value|Geographical Mobility in the Past Year by Sex for Current Residence in the United States|Sex by Educational Attainment for the Population 25 Years and Over|Age by Language Spoken at Home for the Population 5 Years and Over|Place of Birth for the Foreign-born Population in the United States|Period of Military Service for Civilian Veterans 18 Years and Over"
     }, {
         "name": "Geography",
         "id_name": "geography",
         "type": "menu",
-        "menu_items": "04000US01|04000US02|04000US04|04000US05|04000US06"
+        "menu_items": "Alabama|Alaska|Arizona|Arkansas|California"
     }]
 }
