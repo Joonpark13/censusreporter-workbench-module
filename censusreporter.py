@@ -53,7 +53,7 @@ def render(table, params):
         return result
 
 
-    # From https://github.com/censusreporter/census-pandas/blob/master/util.py
+    # Modified from https://github.com/censusreporter/census-pandas/blob/master/util.py
     def get_dataframe(tables=None, geoids=None, release='latest',geo_names=False,col_names=False,include_moe=False):
         response = get_data(tables=tables,geoids=geoids,release=release)
         frame = pd.DataFrame.from_dict(prep_for_pandas(response['data'],include_moe),orient='index')
@@ -78,8 +78,9 @@ def render(table, params):
     # Currently states only
     geo = GEO_KEYS[geo_num] + "%2C01000US"
 
-    return get_dataframe(topic, geo)
+    return get_dataframe(topic, geo, geo_names=True, col_names=True)
 
 
 if __name__ == "__main__":
-    print(render(None, {'topic': 0, 'geography':0}))
+    dframe = render(None, {'topic': 0, 'geography':0})
+    print(dframe)
