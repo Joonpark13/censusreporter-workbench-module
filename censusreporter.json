@@ -9,9 +9,9 @@
         "type": "menu",
         "menu_items": "Sex by Age|Hispanic or Latino Origin by Race|Household Income in the Past 12 Months|Poverty Status in the Past 12 Months by Sex by Age|Sex of Workers by Means of Transportation to Work|Household Type by Relatives and Nonrelatives for Population in Households|Sex by Marital Status for the Population 15 Years and Over|Women 15 to 50 Years Who Had a Birth in the Past 12 Months by Age|Occupancy Status|Tenure|Units in Structure|Total Population in Occupied Housing Units by Tenure by Year Householder Moved Into Unit|Value|Geographical Mobility in the Past Year by Sex for Current Residence in the United States|Sex by Educational Attainment for the Population 25 Years and Over|Age by Language Spoken at Home for the Population 5 Years and Over|Place of Birth for the Foreign-born Population in the United States|Period of Military Service for Civilian Veterans 18 Years and Over"
     }, {
-        "name": "Geography",
-        "id_name": "geography",
+        "name": "Summary Level",
+        "id_name": "sumlevel",
         "type": "menu",
-        "menu_items": "Alabama|Alaska|Arizona|Arkansas|California"
+        "menu_items": "States in US|Counties"
     }]
 }

@@ -71,16 +71,18 @@ def render(table, params):
         return frame
 
 
-    topic_num = int(params['topic'])
-    geo_num = int(params['geography'])
 
+    topic_num = int(params['topic'])
     topic = TOPIC_KEYS[topic_num]
-    # Currently states only
-    geo = GEO_KEYS[geo_num] + "%2C01000US"
+
+    sumlevel_num = int(params['sumlevel'])
+    if sumlevel_num == 0:
+        geo = "040%7C01000US" # all states
+
 
     return get_dataframe(topic, geo, geo_names=True, col_names=True)
 
 
 if __name__ == "__main__":
-    dframe = render(None, {'topic': 0, 'geography':0})
+    dframe = render(None, {'topic': 0, 'sumlevel':0})
     print(dframe)
