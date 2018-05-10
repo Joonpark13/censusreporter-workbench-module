@@ -64,9 +64,21 @@ def render(table, params):
         if col_names:
             d = {}
             for table_id in response['tables']:
+                colname_prepends = []
                 columns = response['tables'][table_id]['columns']
                 for column_id in columns:
-                    d[column_id] = columns[column_id]['name']
+                    colname = columns[column_id]['name']
+                    indent = columns[column_id]['indent']
+
+                    if indent is not None:
+                        if indent > len(colname_prepends) - 1:
+                            colname_prepends += [colname]
+                        else:
+                            colname_prepends = colname_prepends[:indent] + [colname]
+                        d[column_id] = " ".join(colname_prepends[1:]) # Indent level 0 is always "Total:"
+                    else:
+                        d[column_id] = colname
+
             frame = frame.rename(columns=d)
         return frame
 
