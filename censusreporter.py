@@ -75,7 +75,11 @@ def render(table, params):
                             colname_prepends += [colname]
                         else:
                             colname_prepends = colname_prepends[:indent] + [colname]
-                        d[column_id] = " ".join(colname_prepends[1:]) # Indent level 0 is always "Total:"
+
+                        if indent == 0:
+                            d[column_id] = colname
+                        else:
+                            d[column_id] = " ".join(colname_prepends[1:]) # Never want to prepend "Total:"
                     else:
                         d[column_id] = colname
 
