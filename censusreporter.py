@@ -70,6 +70,7 @@ def render(table, params):
                     colname = columns[column_id]['name']
                     indent = columns[column_id]['indent']
 
+                    # Prepend nested column names
                     if indent is not None:
                         if indent > len(colname_prepends) - 1:
                             colname_prepends += [colname]
@@ -84,6 +85,11 @@ def render(table, params):
                         d[column_id] = colname
 
             frame = frame.rename(columns=d)
+
+        # Add geoid column
+        parsed_geoids = sorted(response['geography'].keys())[1:] # First one is parent
+        frame.insert(1, 'geoid', parsed_geoids) 
+
         return frame
 
 
