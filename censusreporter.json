@@ -13,14 +13,5 @@
         "id_name": "sumlevel",
         "type": "menu",
         "menu_items": "States in US|Counties"
-    }, {
-        "name": "",
-        "id_name": "state",
-        "type": "menu",
-        "menu_items": "Alabama|Alaska|Arizona|Arkansas|California|Colorado",
-        "visible_if": {
-            "id_name": "sumlevel",
-            "value": 1
-        }
     }]
 }
