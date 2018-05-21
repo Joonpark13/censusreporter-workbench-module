@@ -13,5 +13,14 @@
         "id_name": "sumlevel",
         "type": "menu",
         "menu_items": "States in US|Counties"
+    }, {
+        "name": "",
+        "id_name": "states",
+        "type": "menu",
+        "menu_items": "Alabama|Alaska",
+        "visible_if": {
+            "id_name": "sumlevel",
+            "value": "Counties"
+        }
     }]
 }
