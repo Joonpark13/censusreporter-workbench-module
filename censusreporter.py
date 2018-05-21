@@ -9,7 +9,12 @@ def render(table, params):
     TOPIC_KEYS = ['B01001', 'B03002', 'B19001', 'B17001', 'B08006', 'B11002',
         'B12001', 'B13016', 'B25002', 'B25003', 'B25024', 'B25026', 'B25075',
         'B07003', 'B15002', 'B16007', 'B05006', 'B21002']
-    GEO_KEYS = ['04000US01', '04000US02', '04000US04', '04000US05', '04000US06']
+    STATE_FIPS = ["01", "02", "04", "05", "06", "08", "09", "10", "11", "12",
+        "13", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24",
+        "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35",
+        "36", "37", "38", "39", "40", "41", "42", "44", "45", "46", "47",
+        "48", "49", "50", "51", "53", "54", "55", "56", "60", "66", "69",
+        "72", "78"]
 
 
     # Modified from https://github.com/censusreporter/census-pandas/blob/master/util.py
@@ -100,11 +105,23 @@ def render(table, params):
     sumlevel_num = int(params['sumlevel'])
     if sumlevel_num == 0:
         geo = "040%7C01000US" # all states
+    elif sumlevel_num == 1: # Counties
+        state_selected = int(params['states'])
+        selected_state_fips = STATE_FIPS[state_selected]
+        geo = "050%7C04000US" + selected_state_fips
+    elif sumlevel_num == 2: # Places
+        state_selected = int(params['states'])
+        selected_state_fips = STATE_FIPS[state_selected]
+        geo = "160%7C04000US" + selected_state_fips
+    elif sumlevel_num == 3: # Metro Areas
+        state_selected = int(params['states'])
+        selected_state_fips = STATE_FIPS[state_selected]
+        geo = "310%7C04000US" + selected_state_fips
 
 
     return get_dataframe(topic, geo, geo_names=True, col_names=True)
 
 
 if __name__ == "__main__":
-    dframe = render(None, {'topic': 0, 'sumlevel':0})
+    dframe = render(None, {'topic': 0, 'sumlevel': 3, 'states': 36})
     print(dframe)
