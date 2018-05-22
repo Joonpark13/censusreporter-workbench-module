@@ -6,9 +6,7 @@ def render(table, params):
     import json
 
 
-    TOPIC_KEYS = ['B01001', 'B03002', 'B19001', 'B17001', 'B08006', 'B11002',
-        'B12001', 'B13016', 'B25002', 'B25003', 'B25024', 'B25026', 'B25075',
-        'B07003', 'B15002', 'B16007', 'B05006', 'B21002']
+    TOPIC_KEYS = ['B01001', 'B01001']
     STATE_FIPS = ["01", "02", "04", "05", "06", "08", "09", "10", "11", "12",
         "13", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24",
         "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35",
@@ -98,6 +96,50 @@ def render(table, params):
         return frame
 
 
+    def get_dataframe_simple(topic_num, topic, geo):
+        response = get_data(tables=topic, geoids=geo, release='latest')
+        data = pd.DataFrame.from_dict(prep_for_pandas(response['data'], False), orient='index')
+        data = data[sorted(data.columns.values)] # data not returned in order
+
+        geo = pd.DataFrame.from_dict(response['geography'], orient='index')
+        curated_data = pd.DataFrame.from_dict(geo['name'].iloc[1:])
+
+        # Add geoid column
+        parsed_geoids = sorted(response['geography'].keys())[1:] # First one is parent
+        curated_data.insert(1, 'geoid', parsed_geoids) 
+
+        # Column curation
+        if topic_num == 0:
+            under_18 = data['B01001003'] + data['B01001004'] + data['B01001005'] + \
+                data['B01001006'] + data['B01001027'] + data['B01001028'] + \
+                data['B01001029'] + data['B01001030']
+            curated_data.insert(2, 'Under 18', under_18)
+
+            eighteen_to_64 = data['B01001007'] + data['B01001008'] + \
+                data['B01001009'] + data['B01001010'] + data['B01001011'] + \
+                data['B01001012'] + data['B01001013'] + data['B01001014'] + \
+                data['B01001015'] + data['B01001016'] + data['B01001017'] + \
+                data['B01001018'] + data['B01001019'] + data['B01001031'] + \
+                data['B01001032'] + data['B01001033'] + data['B01001034'] + \
+                data['B01001035'] + data['B01001036'] + data['B01001037'] + \
+                data['B01001038'] + data['B01001039'] + data['B01001040'] + \
+                data['B01001041'] + data['B01001042'] + data['B01001043']
+            curated_data.insert(3, '18 to 64', eighteen_to_64)
+
+            over_65 = data['B01001020'] + data['B01001021'] + \
+                data['B01001022'] + data['B01001023'] + data['B01001024'] + \
+                data['B01001025'] + data['B01001044'] + data['B01001045'] + \
+                data['B01001046'] + data['B01001047'] + data['B01001048'] + \
+                data['B01001049']
+            curated_data.insert(4, 'Over 65', over_65)
+            
+        elif topic_num == 1:
+            curated_data.insert(2, 'Male', data['B01001002'])
+            curated_data.insert(3, 'Female', data['B01001026'])
+
+        return curated_data
+
+
 
     topic_num = int(params['topic'])
     topic = TOPIC_KEYS[topic_num]
@@ -119,9 +161,10 @@ def render(table, params):
         geo = "310%7C04000US" + selected_state_fips
 
 
-    return get_dataframe(topic, geo, geo_names=True, col_names=True)
+    # return get_dataframe(topic, geo, geo_names=True, col_names=True)
+    return get_dataframe_simple(topic_num, topic, geo)
 
 
 if __name__ == "__main__":
-    dframe = render(None, {'topic': 0, 'sumlevel': 3, 'states': 36})
+    dframe = render(None, {'topic': 1, 'sumlevel': 0})
     print(dframe)
