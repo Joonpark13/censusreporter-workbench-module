@@ -148,15 +148,15 @@ def render(table, params):
     if sumlevel_num == 0:
         geo = "040%7C01000US" # all states
     elif sumlevel_num == 1: # Counties
-        state_selected = int(params['states'])
+        state_selected = int(params['states-for-counties'])
         selected_state_fips = STATE_FIPS[state_selected]
         geo = "050%7C04000US" + selected_state_fips
     elif sumlevel_num == 2: # Places
-        state_selected = int(params['states'])
+        state_selected = int(params['states-for-places'])
         selected_state_fips = STATE_FIPS[state_selected]
         geo = "160%7C04000US" + selected_state_fips
     elif sumlevel_num == 3: # Metro Areas
-        state_selected = int(params['states'])
+        state_selected = int(params['states-for-metro-areas'])
         selected_state_fips = STATE_FIPS[state_selected]
         geo = "310%7C04000US" + selected_state_fips
 
@@ -166,5 +166,5 @@ def render(table, params):
 
 
 if __name__ == "__main__":
-    dframe = render(None, {'topic': 1, 'sumlevel': 0})
+    dframe = render(None, {'topic': 1, 'sumlevel': 1, 'states-for-counties': 0})
     print(dframe)
