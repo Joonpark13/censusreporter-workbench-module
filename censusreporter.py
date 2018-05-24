@@ -6,7 +6,7 @@ def render(table, params):
     import json
 
 
-    TOPIC_KEYS = ['B01001', 'B01001']
+    TOPIC_KEYS = ['B01001', 'B01001', 'B03002', 'B19001']
     STATE_FIPS = ["01", "02", "04", "05", "06", "08", "09", "10", "11", "12",
         "13", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24",
         "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35",
@@ -109,7 +109,7 @@ def render(table, params):
         curated_data.insert(1, 'geoid', parsed_geoids) 
 
         # Column curation
-        if topic_num == 0:
+        if topic_num == 0: # Age
             under_18 = data['B01001003'] + data['B01001004'] + data['B01001005'] + \
                 data['B01001006'] + data['B01001027'] + data['B01001028'] + \
                 data['B01001029'] + data['B01001030']
@@ -133,9 +133,34 @@ def render(table, params):
                 data['B01001049']
             curated_data.insert(4, 'Over 65', over_65)
             
-        elif topic_num == 1:
+        elif topic_num == 1: # Sex
             curated_data.insert(2, 'Male', data['B01001002'])
             curated_data.insert(3, 'Female', data['B01001026'])
+
+        elif topic_num == 2: # Race
+            curated_data.insert(2, 'White', data['B03002003'])
+            curated_data.insert(3, 'Black', data['B03002004'])
+            curated_data.insert(4, 'Native', data['B03002005'])
+            curated_data.insert(5, 'Asian', data['B03002006'])
+            curated_data.insert(5, 'Islander', data['B03002007'])
+            curated_data.insert(5, 'Other', data['B03002008'])
+            curated_data.insert(5, 'Two or More', data['B03002009'])
+            curated_data.insert(6, 'Hispanic', data['B03002012'])
+
+        elif topic_num == 3: # Household Income
+            under_50k = data['B19001002'] + data['B19001003'] + \
+                data['B19001004'] + data['B19001005'] + data['B19001006'] + \
+                data['B19001007'] + data['B19001008'] + data['B19001009'] + \
+                data['B19001010']
+            curated_data.insert(2, 'Under $50K', under_50k)
+
+            fifty_to_100k = data['B19001011'] + data['B19001012'] + data['B19001013']
+            curated_data.insert(3, '$50K to $100K', fifty_to_100k)
+
+            hundred_to_200k = data['B19001014'] + data['B19001015'] + data['B19001016']
+            curated_data.insert(4, '$100K to $200K', hundred_to_200k)
+
+            curated_data.insert(5, 'Over $200K', data['B19001017'])
 
         return curated_data
 
@@ -166,5 +191,5 @@ def render(table, params):
 
 
 if __name__ == "__main__":
-    dframe = render(None, {'topic': 1, 'sumlevel': 1, 'states-for-counties': 0})
+    dframe = render(None, {'topic': 3, 'sumlevel': 1, 'states-for-counties': 0})
     print(dframe)
