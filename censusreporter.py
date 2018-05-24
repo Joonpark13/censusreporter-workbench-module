@@ -6,7 +6,7 @@ def render(table, params):
     import json
 
 
-    TOPIC_KEYS = ['B01001', 'B01001', 'B03002', 'B19001', 'B17001']
+    TOPIC_KEYS = ['B01001', 'B01001', 'B03002', 'B19001', 'B17001', 'B08006']
     STATE_FIPS = ["01", "02", "04", "05", "06", "08", "09", "10", "11", "12",
         "13", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24",
         "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35",
@@ -183,6 +183,15 @@ def render(table, params):
             non_poverty = data['B17001044'] + data['B17001045'] + data['B17001058'] + data['B17001059']
             curated_data.insert(5, 'Non-poverty, Seniors (65 and Over)', non_poverty)
 
+        elif topic_num == 5: # Transportation to Work
+            curated_data.insert(2, 'Drove Alone', data['B08006003'])
+            curated_data.insert(3, 'Carpooled', data['B08006004'])
+            curated_data.insert(4, 'Public Transit', data['B08006008'])
+            curated_data.insert(5, 'Bicycle', data['B08006014'])
+            curated_data.insert(6, 'Walked', data['B08006015'])
+            curated_data.insert(7, 'Other', data['B08006016'])
+            curated_data.insert(8, 'Worked at Home', data['B08006017'])
+
         return curated_data
 
 
@@ -212,5 +221,5 @@ def render(table, params):
 
 
 if __name__ == "__main__":
-    dframe = render(None, {'topic': 4, 'sumlevel': 1, 'states-for-counties': 0})
+    dframe = render(None, {'topic': 5, 'sumlevel': 1, 'states-for-counties': 0})
     print(dframe)
