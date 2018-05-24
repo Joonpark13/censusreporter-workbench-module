@@ -7,7 +7,7 @@
         "name": "Topic",
         "id_name": "topic",
         "type": "menu",
-        "menu_items": "Age|Sex|Race|Household Income|Poverty|Transportation to Work|Population by Household Type"
+        "menu_items": "Age|Sex|Race|Household Income|Poverty|Transportation to Work|Population by Household Type|Martial Status by Sex"
     }, {
         "name": "Summary Level",
         "id_name": "sumlevel",

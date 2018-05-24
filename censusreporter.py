@@ -7,7 +7,7 @@ def render(table, params):
 
 
     TOPIC_KEYS = ['B01001', 'B01001', 'B03002', 'B19001', 'B17001', 'B08006',
-        'B11002']
+        'B11002', 'B12001']
     STATE_FIPS = ["01", "02", "04", "05", "06", "08", "09", "10", "11", "12",
         "13", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24",
         "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35",
@@ -199,6 +199,16 @@ def render(table, params):
             curated_data.insert(4, 'Female Householder', data['B11002009'])
             curated_data.insert(5, 'Non-family', data['B11002012'])
 
+        elif topic_num == 7: # Marital Status by Sex
+            curated_data.insert(2, 'Never Married: Male', data['B12001003'])
+            curated_data.insert(3, 'Never Married: Female', data['B12001012'])
+            curated_data.insert(4, 'Married: Male', data['B12001004'])
+            curated_data.insert(5, 'Married: Female', data['B12001013'])
+            curated_data.insert(6, 'Divorced: Male', data['B12001010'])
+            curated_data.insert(7, 'Divorced: Female', data['B12001019'])
+            curated_data.insert(8, 'Windowed: Male', data['B12001009'])
+            curated_data.insert(9, 'Windowed: Female', data['B12001018'])
+
         return curated_data
 
 
@@ -228,5 +238,5 @@ def render(table, params):
 
 
 if __name__ == "__main__":
-    dframe = render(None, {'topic': 6, 'sumlevel': 1, 'states-for-counties': 0})
+    dframe = render(None, {'topic': 7, 'sumlevel': 1, 'states-for-counties': 0})
     print(dframe)
