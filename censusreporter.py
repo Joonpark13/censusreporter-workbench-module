@@ -6,7 +6,7 @@ def render(table, params):
     import json
 
 
-    TOPIC_KEYS = ['B01001', 'B01001', 'B03002', 'B19001']
+    TOPIC_KEYS = ['B01001', 'B01001', 'B03002', 'B19001', 'B17001']
     STATE_FIPS = ["01", "02", "04", "05", "06", "08", "09", "10", "11", "12",
         "13", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24",
         "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35",
@@ -162,6 +162,27 @@ def render(table, params):
 
             curated_data.insert(5, 'Over $200K', data['B19001017'])
 
+        elif topic_num == 4: # Poverty
+            poverty = data['B17001004'] + data['B17001005'] + \
+                data['B17001006'] + data['B17001007'] + data['B17001008'] + \
+                data['B17001009'] + data['B17001018'] + data['B17001019'] + \
+                data['B17001020'] + data['B17001021'] + data['B17001022'] + \
+                data['B17001023']
+            curated_data.insert(2, 'Poverty, Children (Under 18)', poverty)
+
+            non_poverty = data['B17001033'] + data['B17001034'] + \
+                data['B17001035'] + data['B17001036'] + data['B17001037'] + \
+                data['B17001038'] + data['B17001047'] + data['B17001048'] + \
+                data['B17001049'] + data['B17001050'] + data['B17001051'] + \
+                data['B17001052']
+            curated_data.insert(3, 'Non-poverty, Children (Under 18)', non_poverty)
+
+            poverty = data['B17001015'] + data['B17001016'] + data['B17001029'] + data['B17001030']
+            curated_data.insert(4, 'Poverty, Seniors (65 and Over)', poverty)
+
+            non_poverty = data['B17001044'] + data['B17001045'] + data['B17001058'] + data['B17001059']
+            curated_data.insert(5, 'Non-poverty, Seniors (65 and Over)', non_poverty)
+
         return curated_data
 
 
@@ -191,5 +212,5 @@ def render(table, params):
 
 
 if __name__ == "__main__":
-    dframe = render(None, {'topic': 3, 'sumlevel': 1, 'states-for-counties': 0})
+    dframe = render(None, {'topic': 4, 'sumlevel': 1, 'states-for-counties': 0})
     print(dframe)
