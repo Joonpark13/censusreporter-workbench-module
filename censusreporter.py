@@ -8,7 +8,7 @@ def render(table, params):
 
     TOPIC_KEYS = ['B01001', 'B01001', 'B03002', 'B19001', 'B17001', 'B08006',
         'B11002', 'B12001', 'B13016', 'B25002', 'B25003', 'B25024', 'B25026',
-        'B25075', 'B07003']
+        'B25075', 'B07003', 'B15002']
     STATE_FIPS = ["01", "02", "04", "05", "06", "08", "09", "10", "11", "12",
         "13", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24",
         "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35",
@@ -264,6 +264,22 @@ def render(table, params):
             curated_data.insert(5, 'From Different State', data['B07003013'])
             curated_data.insert(6, 'From Abroad', data['B07003016'])
 
+        elif topic_num == 15: # Population by minimum level of education
+            curated_data.insert(2, 'No Degree', data['B15002003'] + \
+                data['B15002004'] + data['B15002005'] + data['B15002006'] + \
+                data['B15002007'] + data['B15002008'] + data['B15002009'] + \
+                data['B15002010'] + data['B15002020'] + data['B15002021'] + \
+                data['B15002022'] + data['B15002023'] + data['B15002024'] + \
+                data['B15002025'] + data['B15002026'] + data['B15002027'])
+            curated_data.insert(3, 'High School', data['B15002011'] + data['B15002028'])
+            curated_data.insert(4, 'Some college', data['B15002012'] + \
+                data['B15002013'] + data['B15002014'] + data['B15002029'] + \
+                data['B15002030'] + data['B15002031'])
+            curated_data.insert(5, 'Bachelor\'s', data['B15002015'] + data['B15002032'])
+            curated_data.insert(6, 'Post-grad', data['B15002016'] + \
+                data['B15002017'] + data['B15002018'] + data['B15002033'] + \
+                data['B15002034'] + data['B15002035'])
+            
         return curated_data
 
 
