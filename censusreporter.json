@@ -7,7 +7,7 @@
         "name": "Topic",
         "id_name": "topic",
         "type": "menu",
-        "menu_items": "Age|Sex|Race|Household Income|Poverty|Transportation to Work|Population by Household Type|Martial Status by Sex|Women Who Gave Birth During Past Year, by Age Group|Occupied vs. Vacant Housing|Ownership of Occupied Units|Types of Structure|Year Moved In, by Population|Value of Owner-occupied Housing Units"
+        "menu_items": "Age|Sex|Race|Household Income|Poverty|Transportation to Work|Population by Household Type|Martial Status by Sex|Women Who Gave Birth During Past Year, by Age Group|Occupied vs. Vacant Housing|Ownership of Occupied Units|Types of Structure|Year Moved In, by Population|Value of Owner-occupied Housing Units|Population Migration Since Previous Year"
     }, {
         "name": "Summary Level",
         "id_name": "sumlevel",

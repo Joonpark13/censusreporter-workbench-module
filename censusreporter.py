@@ -8,7 +8,7 @@ def render(table, params):
 
     TOPIC_KEYS = ['B01001', 'B01001', 'B03002', 'B19001', 'B17001', 'B08006',
         'B11002', 'B12001', 'B13016', 'B25002', 'B25003', 'B25024', 'B25026',
-        'B25075']
+        'B25075', 'B07003']
     STATE_FIPS = ["01", "02", "04", "05", "06", "08", "09", "10", "11", "12",
         "13", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24",
         "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35",
@@ -256,6 +256,13 @@ def render(table, params):
             curated_data.insert(6, '$400K to $500K', data['B25075022'])
             curated_data.insert(7, '$500K to $1M', data['B25075023'] + data['B25075024'])
             curated_data.insert(8, 'Over $1M', data['B25075025'])
+
+        elif topic_num == 14: # Population migration since previous year
+            curated_data.insert(2, 'Same House Year Ago', data['B07003004'])
+            curated_data.insert(3, 'From Same County', data['B07003007'])
+            curated_data.insert(4, 'From Different County', data['B07003010'])
+            curated_data.insert(5, 'From Different State', data['B07003013'])
+            curated_data.insert(6, 'From Abroad', data['B07003016'])
 
         return curated_data
 
