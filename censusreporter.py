@@ -7,7 +7,8 @@ def render(table, params):
 
 
     TOPIC_KEYS = ['B01001', 'B01001', 'B03002', 'B19001', 'B17001', 'B08006',
-        'B11002', 'B12001', 'B13016', 'B25002', 'B25003', 'B25024', 'B25026']
+        'B11002', 'B12001', 'B13016', 'B25002', 'B25003', 'B25024', 'B25026',
+        'B25075']
     STATE_FIPS = ["01", "02", "04", "05", "06", "08", "09", "10", "11", "12",
         "13", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24",
         "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35",
@@ -241,6 +242,20 @@ def render(table, params):
             curated_data.insert(5, '1990s', data['B25026005'] + data['B25026012'])
             curated_data.insert(6, '2000 to 2004', data['B25026004'] + data['B25026011'])
             curated_data.insert(7, 'Since 2005', data['B25026003'] + data['B25026010'])
+
+        elif topic_num == 13: # Value of owner-occupied housing units
+            curated_data.insert(2, 'Under $100K', data['B25075002'] + \
+                data['B25075003'] + data['B25075004'] + data['B25075005'] + \
+                data['B25075006'] + data['B25075007'] + data['B25075008'] + \
+                data['B25075009'] + data['B25075010'] + data['B25075011'] + \
+                data['B25075012'] + data['B25075013'] + data['B25075014'])
+            curated_data.insert(3, '$100K to $200K', data['B25075015'] + \
+                data['B25075016'] + data['B25075017'] + data['B25075018'])
+            curated_data.insert(4, '$200K to $300K', data['B25075019'] + data['B25075020'])
+            curated_data.insert(5, '$300K to $400K', data['B25075021'])
+            curated_data.insert(6, '$400K to $500K', data['B25075022'])
+            curated_data.insert(7, '$500K to $1M', data['B25075023'] + data['B25075024'])
+            curated_data.insert(8, 'Over $1M', data['B25075025'])
 
         return curated_data
 
