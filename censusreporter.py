@@ -1,4 +1,4 @@
-import pandas as pd
+# import pandas as pd
 
 def render(table, params):
     import urllib.request as urlreq
@@ -7,7 +7,7 @@ def render(table, params):
 
 
     TOPIC_KEYS = ['B01001', 'B01001', 'B03002', 'B19001', 'B17001', 'B08006',
-        'B11002', 'B12001', 'B13016', 'B25002']
+        'B11002', 'B12001', 'B13016', 'B25002', 'B25003']
     STATE_FIPS = ["01", "02", "04", "05", "06", "08", "09", "10", "11", "12",
         "13", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24",
         "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35",
@@ -221,6 +221,10 @@ def render(table, params):
         elif topic_num == 9: # Occupied vs. Vacant Housing
             curated_data.insert(2, 'Occupied', data['B25002002'])
             curated_data.insert(3, 'Vacant', data['B25002003'])
+
+        elif topic_num == 10: # Ownership of Occupied Units
+            curated_data.insert(2, 'Owner Occupied', data['B25003002'])
+            curated_data.insert(3, 'Renter Occupied', data['B25003003'])
 
         return curated_data
 
