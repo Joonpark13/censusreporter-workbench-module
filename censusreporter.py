@@ -7,7 +7,7 @@ def render(table, params):
 
 
     TOPIC_KEYS = ['B01001', 'B01001', 'B03002', 'B19001', 'B17001', 'B08006',
-        'B11002', 'B12001', 'B13016', 'B25002', 'B25003']
+        'B11002', 'B12001', 'B13016', 'B25002', 'B25003', 'B25024']
     STATE_FIPS = ["01", "02", "04", "05", "06", "08", "09", "10", "11", "12",
         "13", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24",
         "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35",
@@ -225,6 +225,14 @@ def render(table, params):
         elif topic_num == 10: # Ownership of Occupied Units
             curated_data.insert(2, 'Owner Occupied', data['B25003002'])
             curated_data.insert(3, 'Renter Occupied', data['B25003003'])
+
+        elif topic_num == 11: # Types of Structure
+            curated_data.insert(2, 'Single Unit', data['B25024002'] + data['B25024003'])
+            curated_data.insert(3, 'Multi-unit', data['B25024004'] + \
+                data['B25024005'] + data['B25024006'] + data['B25024007'] + \
+                data['B25024008'] + data['B25024009'])
+            curated_data.insert(4, 'Mobile Home', data['B25024010'])
+            curated_data.insert(5, 'Vehicle', data['B25024011'])
 
         return curated_data
 
