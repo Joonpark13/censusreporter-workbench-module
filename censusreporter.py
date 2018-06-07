@@ -8,7 +8,7 @@ def render(table, params):
 
     TOPIC_KEYS = ['B01001', 'B01001', 'B03002', 'B19001', 'B17001', 'B08006',
         'B11002', 'B12001', 'B13016', 'B25002', 'B25003', 'B25024', 'B25026',
-        'B25075', 'B07003', 'B15002']
+        'B25075', 'B07003', 'B15002', 'B16007', 'B16007']
     STATE_FIPS = ["01", "02", "04", "05", "06", "08", "09", "10", "11", "12",
         "13", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24",
         "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35",
@@ -279,7 +279,21 @@ def render(table, params):
             curated_data.insert(6, 'Post-grad', data['B15002016'] + \
                 data['B15002017'] + data['B15002018'] + data['B15002033'] + \
                 data['B15002034'] + data['B15002035'])
-            
+
+        elif topic_num == 16: # Language at home, children 5-17
+            curated_data.insert(2, 'English Only', data['B16007003'])
+            curated_data.insert(3, 'Spanish', data['B16007004'])
+            curated_data.insert(4, 'Indo-European', data['B16007005'])
+            curated_data.insert(5, 'Asian/Islander', data['B16007006'])
+            curated_data.insert(6, 'Other', data['B16007007'])
+
+        elif topic_num == 17: # Language at home, adults 18+
+            curated_data.insert(2, 'English Only', data['B16007009'] + data['B16007015'])
+            curated_data.insert(3, 'Spanish', data['B16007010'] + data['B16007016'])
+            curated_data.insert(4, 'Indo-European', data['B16007011'] + data['B16007017'])
+            curated_data.insert(5, 'Asian/Islander', data['B16007012'] + data['B16007018'])
+            curated_data.insert(6, 'Other', data['B16007013'] + data['B16007019'])
+
         return curated_data
 
 
@@ -309,5 +323,5 @@ def render(table, params):
 
 
 if __name__ == "__main__":
-    dframe = render(None, {'topic': 9, 'sumlevel': 1, 'states-for-counties': 0})
+    dframe = render(None, {'topic': 16, 'sumlevel': 1, 'states-for-counties': 0})
     print(dframe)
