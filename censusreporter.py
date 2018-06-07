@@ -8,7 +8,7 @@ def render(table, params):
 
     TOPIC_KEYS = ['B01001', 'B01001', 'B03002', 'B19001', 'B17001', 'B08006',
         'B11002', 'B12001', 'B13016', 'B25002', 'B25003', 'B25024', 'B25026',
-        'B25075', 'B07003', 'B15002', 'B16007', 'B16007']
+        'B25075', 'B07003', 'B15002', 'B16007', 'B16007', 'B05006', 'B21002']
     STATE_FIPS = ["01", "02", "04", "05", "06", "08", "09", "10", "11", "12",
         "13", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24",
         "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35",
@@ -293,6 +293,21 @@ def render(table, params):
             curated_data.insert(4, 'Indo-European', data['B16007011'] + data['B16007017'])
             curated_data.insert(5, 'Asian/Islander', data['B16007012'] + data['B16007018'])
             curated_data.insert(6, 'Other', data['B16007013'] + data['B16007019'])
+
+        elif topic_num == 18: # Place of birth for foreign-born population
+            curated_data.insert(2, 'Europe', data['B05006002'])
+            curated_data.insert(3, 'Asia', data['B05006047'])
+            curated_data.insert(4, 'Africa', data['B05006091'])
+            curated_data.insert(5, 'Oceania', data['B05006116'])
+            curated_data.insert(6, 'Latin America', data['B05006123'])
+            curated_data.insert(7, 'North America', data['B05006159'])
+
+        elif topic_num == 19: # Veterans by wartime service
+            curated_data.insert(2, 'WWII', data['B21002009'] + data['B21002011'] + data['B21002012'])
+            curated_data.insert(3, 'Korea', data['B21002008'] + data['B21002009'] + data['B21002010'] + data['B21002011'])
+            curated_data.insert(4, 'Vietnam', data['B21002004'] + data['B21002006'] + data['B21002007'] + data['B21002008'] + data['B21002009'])
+            curated_data.insert(5, 'Gulf (1990s)', data['B21002003'] + data['B21002004'] + data['B21002005'] + data['B21002006'])
+            curated_data.insert(6, 'Gulf (2001-)', data['B21002002'] + data['B21002003'] + data['B21002004'])
 
         return curated_data
 
