@@ -1,8 +1,9 @@
 {
-    "name": "American Community Survey",
+    "name": "U.S. Community Survey",
     "id_name": "ACS2016",
     "category": "Add data",
     "description": "Import ACS data using the Census Reporter API.",
+    "icon" : "census",
     "parameters": [{
         "name": "Topic",
         "id_name": "topic",
