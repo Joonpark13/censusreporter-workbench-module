@@ -1,5 +1,5 @@
 # American Community Survey Workbench Module
-======
+
 ### Powered by [the Census Reporter API](https://github.com/censusreporter/census-api)
 
 This is an external data module for [Workbench](https://github.com/CJWorkbench/cjworkbench) that helps users work with data from the [American Community Survey](https://www.census.gov/programs-surveys/acs/). The module is powered by the same API that powers the [Census Reporter](https://censusreporter.org/) project.
