@@ -6,15 +6,19 @@ This is an external data module for [Workbench](https://github.com/CJWorkbench/c
 
 ## Usage
  - Select the topic that you're interested in.
+
 ![](images/Step1.png)
 
 - Select the relevant summary level.
+
 ![](images/Step2.png)
 
 - Select the state from which you want the data (unless your summary level is States in US, in which case you can skip this step).
+
 ![](images/Step3.png)
 
 - Now you can take the data and continue your analysis!
+
 ![](images/Step4.png)
 
 ## Contributing
